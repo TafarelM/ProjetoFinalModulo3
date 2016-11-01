@@ -1,13 +1,14 @@
 package view;
 
+import ulti.SoNumeros;
+import javax.swing.JOptionPane;
 import model.bean.Disciplina;
 import model.dao.DisciplinaDAO;
-
 /**
  *
  * @author Tafar
  */
-public class FrmCadastrarDisciplina extends javax.swing.JFrame {
+public class FrmCadastrarDisciplina extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmCadastrarDisciplina
@@ -16,8 +17,13 @@ public class FrmCadastrarDisciplina extends javax.swing.JFrame {
     Disciplina d = new Disciplina();
 
     public FrmCadastrarDisciplina(Disciplina disciplina, Integer modo) {
-        initComponents();        
+        initComponents();
         
+        txtCargahoraria.setDocument(new SoNumeros());
+        txtNumeroVagas.setDocument(new SoNumeros());
+
+        this.setModal(true);
+
         d = disciplina;
         modoEscopo = modo;
 
@@ -32,7 +38,7 @@ public class FrmCadastrarDisciplina extends javax.swing.JFrame {
             this.setTitle("Editar Disciplina");
             btnSalvar.setText("Editar");
             btnFechar.setText("Cancelar");
-            
+
             txtId.setText(Integer.toString(disciplina.getId()));
             txtNome.setText(disciplina.getNome());
             txtCargahoraria.setText(Integer.toString(disciplina.getCargaHoraria()));
@@ -191,6 +197,32 @@ public class FrmCadastrarDisciplina extends javax.swing.JFrame {
         DisciplinaDAO dao = new DisciplinaDAO();
 
         if (modoEscopo == 1) {
+            if(txtNome.getText().trim().length() < 2){
+                JOptionPane.showMessageDialog(null, "Campo Nome é obrigatorio.");
+                txtNome.requestFocus();
+                return;
+            }
+            if(txtCargahoraria.getText().trim().length() < 1){
+                JOptionPane.showMessageDialog(null, "Carga horária é um campo obrigatorio.");
+                txtCargahoraria.requestFocus();
+                return;
+            }
+            if(txtCurso.getText().trim().length() < 2){
+                JOptionPane.showMessageDialog(null, "Curso é um campo obrigatorio.");
+                txtCurso.requestFocus();
+                return;
+            }
+            if(txtNumeroVagas.getText().trim().length() < 1){
+                JOptionPane.showMessageDialog(null, "Numero de vagas é um campo obrigatorio.");
+                txtNumeroVagas.requestFocus();
+                return;
+            }
+            if(cbPeriodo.getSelectedIndex() < 0){
+                JOptionPane.showMessageDialog(null, "Periodo é um campo obrigatorio.");
+                cbPeriodo.requestFocus();
+                return;
+            }   
+
             disciplina.setNome(txtNome.getText());
             disciplina.setCargaHoraria(Integer.parseInt(txtCargahoraria.getText()));
             disciplina.setCurso(txtCurso.getText());
@@ -206,17 +238,42 @@ public class FrmCadastrarDisciplina extends javax.swing.JFrame {
             cbPeriodo.setSelectedIndex(-1);
 
         } else if (modoEscopo == 2) {
+            if(txtNome.getText().trim().length() < 2){
+                JOptionPane.showMessageDialog(null, "Campo Nome é obrigatorio.");
+                txtNome.requestFocus();
+                return;
+            }
+            if(txtCargahoraria.getText().trim().length() < 1){
+                JOptionPane.showMessageDialog(null, "Carga horária é um campo obrigatorio.");
+                txtCargahoraria.requestFocus();
+                return;
+            }
+            if(txtCurso.getText().trim().length() < 2){
+                JOptionPane.showMessageDialog(null, "Curso é um campo obrigatorio.");
+                txtCurso.requestFocus();
+                return;
+            }
+            if(txtNumeroVagas.getText().trim().length() < 1){
+                JOptionPane.showMessageDialog(null, "Numero de vagas é um campo obrigatorio.");
+                txtNumeroVagas.requestFocus();
+                return;
+            }
+            if(cbPeriodo.getSelectedIndex() < 0){
+                JOptionPane.showMessageDialog(null, "Periodo é um campo obrigatorio.");
+                cbPeriodo.requestFocus();
+                return;
+            } 
+            
             d.setNome(txtNome.getText());
             d.setCargaHoraria(Integer.parseInt(txtCargahoraria.getText()));
             d.setCurso(txtCurso.getText());
             d.setNumeroVagas(Integer.parseInt(txtNumeroVagas.getText()));
             d.setPeriodo(cbPeriodo.getSelectedItem().toString());
-            
+
             dao.editar(d);
-            
+
             this.dispose();
         }
-
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

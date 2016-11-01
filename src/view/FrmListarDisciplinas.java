@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
 
 import model.bean.Disciplina;
@@ -12,7 +7,7 @@ import model.dao.DisciplinaDAO;
  *
  * @author Tafar
  */
-public class FrmListarDisciplinas extends javax.swing.JFrame {
+public class FrmListarDisciplinas extends javax.swing.JDialog {
 
     /**
      * Creates new form FrmListar
@@ -28,7 +23,9 @@ public class FrmListarDisciplinas extends javax.swing.JFrame {
     }
     
     public FrmListarDisciplinas() {
-        initComponents();    
+        initComponents();
+        
+        this.setModal(true);
     }
 
     /**

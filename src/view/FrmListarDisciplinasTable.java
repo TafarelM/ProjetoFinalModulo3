@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.Dialog;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import model.bean.Disciplina;
@@ -238,7 +237,7 @@ public class FrmListarDisciplinasTable extends javax.swing.JFrame {
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         FrmCadastrarDisciplina frmCadastrarDisciplina = new FrmCadastrarDisciplina(null, 1);
         frmCadastrarDisciplina.setVisible(true);
-
+        
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     /**

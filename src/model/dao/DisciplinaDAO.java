@@ -35,9 +35,9 @@ public class DisciplinaDAO {
             
             stmt.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Salvo com sucesso.");
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Erro ao salvar! Detalhes: "+ ex.getMessage());
+            JOptionPane.showMessageDialog(null, "Salvo com Sucesso.", "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException ex) {            
+            JOptionPane.showMessageDialog(null, "Erro ao Salvar Detalhes:"+ ex.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
         } finally {
             ConnectionFactory.closeConnection(conn, stmt);
         }
