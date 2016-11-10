@@ -89,6 +89,7 @@ public class FrmListarDisciplinasTable extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblDisciplinas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane1.setViewportView(tblDisciplinas);
 
         btnFechar.setText("Fechar");
